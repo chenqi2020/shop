@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lg.product.mapper.CategoryBrandMapper">
+    <insert id="save">
+        insert into tb_category_brand(category_id,brand_id) values
+        <foreach collection="categoryIds" separator="," item="categoryId">
+            (categoryId,#{id})
+        </foreach>
+    </insert>
+    <delete id="deleteByBrandId">
+        delete from tb_category_brand where brand_id=#{brandId}
+    </delete>
+
+    <select id="getCategoryIdList" resultType="com.lg.product.entity.CategoryBrand">
+        select * from tb_category_brand where brand_id=#{brandId}
+    </select>
+</mapper>

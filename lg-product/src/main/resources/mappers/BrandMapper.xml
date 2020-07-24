@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lg.product.mapper.BrandMapper">
+
+    <select id="getPage" resultType="com.lg.product.entity.Brand">
+        select * from tb_brand
+        <where>
+            <if test="null!=brand.name and brand.name!=''"> and (name like '%${brand.name}%' or letter like '%${brand.name}%')</if>
+        </where>
+        order by id
+    </select>
+</mapper>
